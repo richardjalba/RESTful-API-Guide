@@ -1,6 +1,3 @@
-# RESTful-API-Guide
-Friendly reference for public use.
-
 **API** is an entryway for clients to reach the data in a server.
 
 Designing APIs increases productivity, structure, professionalism, and makes future changes easier to manage.
@@ -492,4 +489,88 @@ Example:
       HTTP 404 NOT FOUND
    DELETE
       HTTP 204 NO CONTENT
-      HTTP 404 NOT FO*****
+      HTTP 404 NOT FOUND*****
+
+******************STEP 15: Identify Response Content Type per Operation******************
+
+****************application/json****************
+
+******************STEP 16: Identify Response Body per Operation******************
+
+*GET /api/v1/courses
+Responses:
+HTTP 200 OK
+Response Body Format:
+[{
+     "courseId": Unique ID of a course in the system
+     "courseName": Name of the course
+     "courseDuration": Duration of the course in years
+     "courseType": Type of the course
+}]
+Example:
+[{
+     "courseId": 1,
+     "courseName": "Computer Science",
+     "courseDuration": 4,
+     "courseType": "Engineering"
+},
+{
+     "courseId": 2,
+     "courseName": "Computer Science",
+     "courseDuration": 4,
+     "courseType": "Engineering"
+}]
+…*
+
+******************STEP 17: Handle Errors for Operations******************
+
+*HTTP 400 BAD REQUEST
+Response Body Format:
+{
+     "error":
+  {
+     "code": Unique error code for your project
+     "message": Useful message for developers to identify the issue
+  }
+}*
+
+****************STEP 18: Add Filtering If Needed****************
+
+****************STEP 19: Add Pagination If Needed****************
+
+****************STEP 20: Add Sorting If Needed****************
+
+*GET /api/courses
+Request:
+Query parameters (optional):*
+
+*courseType:*
+
+- *Support for Filtering.*
+- *Filter the results by course type.*
+- *Example: api/courses?courseType=Engineering*
+
+*page*
+
+- *Support for Pagination.*
+- *Page number of the result to fetch.*
+- *Example: api/courses?page=1&size=4*
+
+*size*
+
+- *Support for Pagination.*
+- *Page size of each result.*
+- *Example: api/courses?page=1&size=4*
+
+*sortBy*
+
+- *Support for Sorting.*
+- *The field name to sort the results on.*
+- *Example: api/courses?sortBy=courseName*
+
+****************STEP 21: Identify API Versioning Approach & Set Version****************
+
+**********************************Versioning Schema: URL Versioning
+Version: 1.0**********************************
+*/api/v1/courses
+/api/v1/colleges*
